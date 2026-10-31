@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="실제 장소를 검색하고 두 지점 사이의 도로거리와 직선거리를 확인하세요.">
+  <title>사이 · 두 장소 사이의 거리</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header><a class="brand" href="/" aria-label="사이 홈"><span class="logo">↗</span> 사이<span class="brand-sub">SAI / DISTANCE</span></a><span class="header-note">두 장소를 잇는 가장 쉬운 방법</span></header>
+  <main>
+    <section class="intro"><p class="eyebrow">A LITTLE CLOSER, EVERYWHERE</p><h1>여기서 저기까지,<br><span>얼마나 멀까요?</span></h1><p>가고 싶은 두 장소를 찾아보세요.<br>그 사이의 거리를 알려드릴게요.</p></section>
+    <section class="workspace" aria-label="거리 측정">
+      <div class="search-panel">
+        <div class="panel-heading"><h2>어디로 떠나시나요?</h2><span>01 — 02</span></div>
+        <div class="place" data-kind="start"><label for="start"><span class="point start-point">A</span>출발지</label><form id="start-form"><div class="input-row"><input id="start" placeholder="장소명 또는 주소 입력" maxlength="200" autocomplete="off" required><button type="submit">검색 <span aria-hidden="true">↗</span></button></div></form><p class="selected" id="start-selected">예: 서울역, 부산역, 경복궁</p><ul id="start-results" class="results" aria-label="출발지 검색 결과"></ul></div>
+        <button id="swap" class="swap" type="button" aria-label="출발지와 도착지 바꾸기">⇅</button>
+        <div class="place" data-kind="end"><label for="end"><span class="point end-point">B</span>도착지</label><form id="end-form"><div class="input-row"><input id="end" placeholder="장소명 또는 주소 입력" maxlength="200" autocomplete="off" required><button type="submit">검색 <span aria-hidden="true">↗</span></button></div></form><p class="selected" id="end-selected">검색 결과에서 정확한 장소를 선택하세요.</p><ul id="end-results" class="results" aria-label="도착지 검색 결과"></ul></div>
+        <fieldset><legend>거리 계산 기준</legend><label><input type="radio" name="mode" value="driving" checked> 자동차 도로거리</label><label><input type="radio" name="mode" value="straight"> 직선거리</label></fieldset>
+        <button id="calculate" class="calculate" type="button" disabled>거리 알아보기 <span aria-hidden="true">→</span></button>
+        <p id="status" class="status" role="status" aria-live="polite">출발지와 도착지를 각각 검색하고 선택해주세요.</p>
+      </div>
+      <div class="result-panel">
+        <div class="map-art" aria-hidden="true"><div class="grid"></div><svg viewBox="0 0 400 230"><path class="route-shadow" d="M70 170 L135 170 L135 110 L240 110 L240 60 L330 60"/><path class="route-line" d="M70 170 L135 170 L135 110 L240 110 L240 60 L330 60"/><circle cx="70" cy="170" r="17" fill="#214c40"/><text x="70" y="175">A</text><circle cx="330" cy="60" r="17" fill="#e4aa65"/><text x="330" y="65" fill="#243f35">B</text></svg><span class="map-caption">EVERY JOURNEY STARTS WITH TWO POINTS</span></div>
+        <div id="empty" class="empty"><span class="result-kicker">YOUR NEXT JOURNEY</span><h2>두 장소 사이에<br>새로운 여정이 기다려요.</h2><p>장소를 선택하면 이곳에 총거리가 표시됩니다.</p></div>
+        <div id="result" class="result" hidden><span id="result-type" class="result-kicker"></span><h2>총거리 <strong id="distance"></strong></h2><p id="route-summary"></p><p id="duration"></p><a id="map-link" class="map-link" target="_blank" rel="noopener noreferrer">지도에서 보기 <span aria-hidden="true">↗</span></a><p class="result-note" id="result-note"></p></div>
+      </div>
+    </section>
+    <div class="footnotes"><p><span>↳</span> 장소 검색은 검색 버튼을 누를 때만 실행됩니다.</p><p>도로거리는 자동차 추천 경로 기준이며, 실제 이동거리와 다를 수 있습니다.</p></div>
+  </main>
+  <footer><span>조금 더 가까워지는, 사이.</span><span>장소 데이터 © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a> · Nominatim / OSRM</span><a href="https://operations.osmfoundation.org/policies/nominatim/" target="_blank" rel="noopener noreferrer">검색 서비스 이용 정책 ↗</a></footer>
+</body>
+</html>
